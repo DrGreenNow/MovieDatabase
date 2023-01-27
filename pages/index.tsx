@@ -1,10 +1,13 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Header from '../components/Header'
-import Banner from "../components/Banner"
-import requests from "../utils/requests"
-import { Movie } from "../typings"
-import Row from "../components/Row";
+import Banner from '../components/Banner'
+import requests from '../utils/requests'
+import { Movie } from '../typings'
+import Row from '../components/Row'
+import useAuth from '../hooks/useAuth'
+import { modalState } from "../atoms/modalAtoms";
+import { useRecoilValue } from "recoil";
+import Modal from "../components/Modal";
 
 interface Props {
   netflixOriginals: Movie[]
@@ -27,14 +30,18 @@ const Home = ({
   topRated,
   trendingNow,
 }: Props) => {
-  console.log(netflixOriginals);
+  const { loading } = useAuth();
+  const showModal = useRecoilValue(modalState);
+
+  if (loading) return null
+
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
       <Head>
         <title>Home - Netflix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header/>
+      <Header />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         <Banner netflixOriginals={netflixOriginals} />
         <section className="md:space-y-24">
@@ -50,6 +57,7 @@ const Home = ({
           <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
+      {showModal && <Modal/>}
     </div>
   )
 }
