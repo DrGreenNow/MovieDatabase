@@ -43,9 +43,9 @@ const Home = ({
   const movie = useRecoilValue(movieState)
   const list = useList(user?.uid)
 
-  if (loading || subscription === null) return null
+  // if (loading || subscription === null) return null
 
-  if (!subscription) return <Plans products={products} />
+  // if (!subscription) return <Plans products={products} />
 
   return (
     <div
