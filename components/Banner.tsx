@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { Movie } from '../typings'
 import { useEffect, useState } from 'react'
 import { baseUrl } from '../constants/movie'

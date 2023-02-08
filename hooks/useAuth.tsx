@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -54,7 +55,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
         setInitialLoading(false)
       }),
-    [auth], // check
+    [auth],
   )
 
   const signUp = async (email: string, password: string) => {

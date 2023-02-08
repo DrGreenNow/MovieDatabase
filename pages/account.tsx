@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import useSubscriptios from '../hooks/useSubscriptios'
 import useAuth from '../hooks/useAuth'
-import { useState } from 'react'
 import Membership from '../components/Membership'
 import { getProducts, Product } from '@stripe/firestore-stripe-payments'
 import { GetStaticProps } from 'next'
@@ -16,6 +15,7 @@ interface Props {
 const Account = ({ products }: Props) => {
   const { user, logout } = useAuth()
   const subscription = useSubscriptios(user)
+
   return (
     <div>
       <Head>
